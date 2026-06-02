@@ -11,11 +11,11 @@ export const CATEGORY_LABELS: Record<string, string> = {
 }
 
 export const CATEGORY_COLORS: Record<string, { bg: string; text: string; border: string; dot: string }> = {
-  cachorros: { bg: 'bg-amber-50',  text: 'text-amber-800',  border: 'border-amber-200', dot: 'bg-amber-500'  },
-  gatos:     { bg: 'bg-purple-50', text: 'text-purple-800', border: 'border-purple-200', dot: 'bg-purple-500' },
-  passaros:  { bg: 'bg-sky-50',    text: 'text-sky-800',    border: 'border-sky-200',    dot: 'bg-sky-500'    },
-  peixes:    { bg: 'bg-blue-50',   text: 'text-blue-800',   border: 'border-blue-200',   dot: 'bg-blue-500'   },
-  outros:    { bg: 'bg-green-50',  text: 'text-green-800',  border: 'border-green-200',  dot: 'bg-green-500'  },
+  cachorros: { bg: 'bg-white', text: 'text-[#0F766E]', border: 'border-gray-100', dot: 'bg-[#0F766E]' },
+  gatos:     { bg: 'bg-white', text: 'text-[#0F766E]', border: 'border-gray-100', dot: 'bg-[#0F766E]' },
+  passaros:  { bg: 'bg-white', text: 'text-[#0F766E]', border: 'border-gray-100', dot: 'bg-[#0F766E]' },
+  peixes:    { bg: 'bg-white', text: 'text-[#0F766E]', border: 'border-gray-100', dot: 'bg-[#0F766E]' },
+  outros:    { bg: 'bg-white', text: 'text-[#0F766E]', border: 'border-gray-100', dot: 'bg-[#0F766E]' },
 }
 
 export const CATEGORY_DESC: Record<string, string> = {

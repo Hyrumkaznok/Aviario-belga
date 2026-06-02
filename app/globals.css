@@ -1,15 +1,56 @@
 @import "tailwindcss";
 
+@theme {
+  --color-brand: #0F766E;
+  --color-brand-dark: #134E4A;
+  --color-gold: #F59E0B;
+  --color-surface: #F8FAFC;
+  --color-ink: #0F172A;
+  --color-muted: #64748B;
+}
+
 :root {
-  --background: #f9fafb;
-  --foreground: #111827;
+  --brand: #0F766E;
+  --brand-dark: #134E4A;
+  --gold: #F59E0B;
+  --surface: #F8FAFC;
+  --ink: #0F172A;
+  --muted: #64748B;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #F8FAFC;
+  color: #0F172A;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInScale {
+  from { opacity: 0; transform: scale(0.96); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.animate-fade-in       { animation: fadeIn 0.5s ease both; }
+.animate-slide-up      { animation: slideUp 0.6s ease both; }
+.animate-fade-in-scale { animation: fadeInScale 0.4s ease both; }
+
+.animate-delay-100 { animation-delay: 0.1s; }
+.animate-delay-200 { animation-delay: 0.2s; }
+.animate-delay-300 { animation-delay: 0.3s; }
 
 .line-clamp-2 {
   display: -webkit-box;

@@ -1,70 +1,167 @@
 import Link from 'next/link'
-import { PawPrint, Phone, MapPin } from 'lucide-react'
+import { PawPrint, Phone, MapPin, Clock, Mail } from 'lucide-react'
+
+const CATEGORIES = [
+  { href: '/produtos?categoria=cachorros', label: 'Cachorros' },
+  { href: '/produtos?categoria=gatos',     label: 'Gatos'     },
+  { href: '/produtos?categoria=passaros',  label: 'Pássaros'  },
+  { href: '/produtos?categoria=peixes',    label: 'Peixes'    },
+  { href: '/produtos?categoria=outros',    label: 'Outros'    },
+]
+
+const LINKS = [
+  { href: '/',        label: 'Início'   },
+  { href: '/produtos', label: 'Produtos' },
+  { href: '/carrinho', label: 'Carrinho' },
+  { href: '/admin',    label: 'Admin'    },
+]
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-gray-300 mt-16">
-      <div className="max-w-7xl mx-auto px-4 py-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-        {/* Brand */}
-        <div>
-          <div className="flex items-center gap-2 text-white font-bold text-lg mb-3">
-            <PawPrint className="w-6 h-6 text-yellow-400" />
-            <span>Aviário <span className="text-yellow-400">Belga</span></span>
-          </div>
-          <p className="text-sm leading-relaxed">
-            Tudo que seu pet precisa com amor e qualidade. Produtos selecionados para cães, gatos, pássaros e muito mais!
-          </p>
-          <div className="flex gap-3 mt-4">
-            <a href="#" className="text-gray-400 hover:text-yellow-400 transition-colors text-sm font-medium">Instagram</a>
-            <a href="#" className="text-gray-400 hover:text-yellow-400 transition-colors text-sm font-medium">Facebook</a>
-          </div>
-        </div>
+    <footer className="bg-[#0F172A] text-slate-400">
+      {/* Main grid */}
+      <div className="max-w-7xl mx-auto px-4 md:px-6 py-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
 
-        {/* Links */}
-        <div>
-          <h3 className="text-white font-semibold mb-3">Categorias</h3>
-          <ul className="space-y-2 text-sm">
-            <li><Link href="/produtos?categoria=cachorros" className="hover:text-yellow-400 transition-colors">🐶 Cachorros</Link></li>
-            <li><Link href="/produtos?categoria=gatos" className="hover:text-yellow-400 transition-colors">🐱 Gatos</Link></li>
-            <li><Link href="/produtos?categoria=passaros" className="hover:text-yellow-400 transition-colors">🦜 Pássaros</Link></li>
-            <li><Link href="/produtos?categoria=peixes" className="hover:text-yellow-400 transition-colors">🐟 Peixes</Link></li>
-            <li><Link href="/produtos?categoria=outros" className="hover:text-yellow-400 transition-colors">🐾 Outros</Link></li>
-          </ul>
-        </div>
-
-        {/* Contact */}
-        <div>
-          <h3 className="text-white font-semibold mb-3">Contato</h3>
-          <ul className="space-y-2 text-sm">
-            <li className="flex items-center gap-2">
-              <Phone className="w-4 h-4 text-yellow-400" />
-              <span>(11) 99999-9999</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <MapPin className="w-4 h-4 text-yellow-400 mt-0.5 shrink-0" />
-              <span>Rua dos Animais, 123 - São Paulo, SP</span>
-            </li>
-          </ul>
-        </div>
-
-        {/* Hours */}
-        <div>
-          <h3 className="text-white font-semibold mb-3">Horário</h3>
-          <ul className="space-y-1 text-sm">
-            <li>Segunda a Sexta: 8h - 19h</li>
-            <li>Sábado: 8h - 17h</li>
-            <li>Domingo: 9h - 13h</li>
-          </ul>
-          <Link
-            href="/admin"
-            className="inline-block mt-4 text-xs text-gray-500 hover:text-gray-400 transition-colors"
-          >
-            Área Admin
+        {/* Marca */}
+        <div className="sm:col-span-2 lg:col-span-1">
+          <Link href="/" className="flex items-center gap-2.5 mb-4 group">
+            <div className="w-9 h-9 bg-[#0F766E] rounded-xl flex items-center justify-center">
+              <PawPrint className="w-5 h-5 text-white" />
+            </div>
+            <span className="text-white font-bold text-lg tracking-tight">
+              Aviário <span className="text-[#F59E0B]">Belga</span>
+            </span>
           </Link>
+          <p className="text-sm leading-relaxed mb-5">
+            Tudo que seu pet precisa com amor e qualidade. Produtos selecionados para cães, gatos, pássaros e muito mais.
+          </p>
+          <div className="flex gap-3">
+            <a
+              href="#"
+              aria-label="Instagram"
+              className="w-9 h-9 bg-white/5 hover:bg-[#0F766E] border border-white/10 hover:border-[#0F766E] rounded-lg flex items-center justify-center transition-all duration-200 text-xs font-bold text-white"
+            >
+              IG
+            </a>
+            <a
+              href="#"
+              aria-label="Facebook"
+              className="w-9 h-9 bg-white/5 hover:bg-[#0F766E] border border-white/10 hover:border-[#0F766E] rounded-lg flex items-center justify-center transition-all duration-200 text-xs font-bold text-white"
+            >
+              FB
+            </a>
+            <a
+              href="#"
+              aria-label="WhatsApp"
+              className="w-9 h-9 bg-white/5 hover:bg-[#0F766E] border border-white/10 hover:border-[#0F766E] rounded-lg flex items-center justify-center transition-all duration-200 text-xs font-bold text-white"
+            >
+              WA
+            </a>
+          </div>
+        </div>
+
+        {/* Categorias */}
+        <div>
+          <h3 className="text-white font-semibold text-sm uppercase tracking-wider mb-4">Categorias</h3>
+          <ul className="space-y-2.5">
+            {CATEGORIES.map(({ href, label }) => (
+              <li key={href}>
+                <Link
+                  href={href}
+                  className="text-sm hover:text-[#F59E0B] transition-colors duration-200"
+                >
+                  {label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <h3 className="text-white font-semibold text-sm uppercase tracking-wider mb-4 mt-8">Navegação</h3>
+          <ul className="space-y-2.5">
+            {LINKS.map(({ href, label }) => (
+              <li key={href}>
+                <Link
+                  href={href}
+                  className="text-sm hover:text-[#F59E0B] transition-colors duration-200"
+                >
+                  {label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Contato */}
+        <div>
+          <h3 className="text-white font-semibold text-sm uppercase tracking-wider mb-4">Contato</h3>
+          <ul className="space-y-3.5 text-sm">
+            <li className="flex items-start gap-3">
+              <Phone className="w-4 h-4 text-[#F59E0B] mt-0.5 shrink-0" />
+              <div>
+                <p className="text-white font-medium">(11) 99999-9999</p>
+                <p className="text-xs mt-0.5">WhatsApp disponível</p>
+              </div>
+            </li>
+            <li className="flex items-start gap-3">
+              <Mail className="w-4 h-4 text-[#F59E0B] mt-0.5 shrink-0" />
+              <div>
+                <p className="text-white font-medium">contato@aviariobelga.com</p>
+              </div>
+            </li>
+            <li className="flex items-start gap-3">
+              <MapPin className="w-4 h-4 text-[#F59E0B] mt-0.5 shrink-0" />
+              <div>
+                <p className="text-white font-medium">Rua dos Animais, 123</p>
+                <p className="text-xs mt-0.5">São Paulo, SP</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        {/* Horário */}
+        <div>
+          <h3 className="text-white font-semibold text-sm uppercase tracking-wider mb-4">Horário</h3>
+          <ul className="space-y-2.5 text-sm">
+            <li className="flex items-center gap-3">
+              <Clock className="w-4 h-4 text-[#F59E0B] shrink-0" />
+              <div>
+                <p className="text-white font-medium">Seg — Sex</p>
+                <p className="text-xs mt-0.5">8h às 19h</p>
+              </div>
+            </li>
+            <li className="flex items-center gap-3">
+              <Clock className="w-4 h-4 text-[#F59E0B] shrink-0" />
+              <div>
+                <p className="text-white font-medium">Sábado</p>
+                <p className="text-xs mt-0.5">8h às 17h</p>
+              </div>
+            </li>
+            <li className="flex items-center gap-3">
+              <Clock className="w-4 h-4 text-[#F59E0B] shrink-0" />
+              <div>
+                <p className="text-white font-medium">Domingo</p>
+                <p className="text-xs mt-0.5">9h às 13h</p>
+              </div>
+            </li>
+          </ul>
+
+          {/* CTA WhatsApp */}
+          <a
+            href="https://wa.me/5511999999999"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-6 inline-flex items-center gap-2 bg-[#0F766E] hover:bg-[#134E4A] text-white text-sm font-semibold px-4 py-2.5 rounded-xl transition-all duration-200 hover:shadow-lg"
+          >
+            Fale no WhatsApp
+          </a>
         </div>
       </div>
-      <div className="border-t border-gray-800 text-center py-4 text-xs text-gray-500">
-        © {new Date().getFullYear()} Aviário Belga. Todos os direitos reservados.
+
+      {/* Bottom bar */}
+      <div className="border-t border-white/5">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-slate-500">
+          <p>© {new Date().getFullYear()} Aviário Belga. Todos os direitos reservados.</p>
+          <p>Desenvolvido com ❤️ para os pets</p>
+        </div>
       </div>
     </footer>
   )
