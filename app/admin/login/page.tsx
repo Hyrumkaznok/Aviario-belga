@@ -24,7 +24,15 @@ export default function AdminLoginPage() {
     })
 
     if (authError) {
-      setError('E-mail ou senha incorretos.')
+      // Mensagem real do Supabase para facilitar diagnóstico
+      const msg = authError.message.toLowerCase()
+      if (msg.includes('email not confirmed')) {
+        setError('E-mail não confirmado. Vá em Supabase → Authentication → Users, clique no usuário e confirme o e-mail manualmente.')
+      } else if (msg.includes('invalid login') || msg.includes('invalid credentials')) {
+        setError('E-mail ou senha incorretos.')
+      } else {
+        setError(`Erro: ${authError.message}`)
+      }
       setLoading(false)
       return
     }
