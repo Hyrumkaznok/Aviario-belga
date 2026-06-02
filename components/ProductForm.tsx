@@ -16,6 +16,43 @@ interface Props {
   title:   string
 }
 
+function Field({
+  label, error, children,
+}: { label: string; error?: string; children: React.ReactNode }) {
+  return (
+    <div>
+      <label className="block text-sm font-medium text-[#0F172A] mb-1.5">{label}</label>
+      {children}
+      {error && <p className="text-xs text-red-500 mt-1">{error}</p>}
+    </div>
+  )
+}
+
+function Toggle({
+  value, onChange, labelOn, labelOff, color = 'bg-[#0F766E]',
+}: {
+  value: boolean
+  onChange: () => void
+  labelOn: string
+  labelOff: string
+  color?: string
+}) {
+  return (
+    <label className="flex items-center justify-between cursor-pointer">
+      <span className="text-sm font-medium text-[#0F172A]">
+        {value ? labelOn : labelOff}
+      </span>
+      <button
+        type="button"
+        onClick={onChange}
+        className={`relative w-11 h-6 rounded-full transition-colors duration-200 ${value ? color : 'bg-gray-200'}`}
+      >
+        <span className={`absolute top-1 w-4 h-4 rounded-full bg-white shadow transition-all duration-200 ${value ? 'left-6' : 'left-1'}`} />
+      </button>
+    </label>
+  )
+}
+
 export default function ProductForm({ initial, onSave, title }: Props) {
   const router = useRouter()
 
@@ -50,16 +87,6 @@ export default function ProductForm({ initial, onSave, title }: Props) {
     `w-full border rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#0F766E] bg-white ${
       errors[field] ? 'border-red-400' : 'border-gray-200'
     }`
-
-  const Field = ({
-    label, error, children,
-  }: { label: string; error?: string; children: React.ReactNode }) => (
-    <div>
-      <label className="block text-sm font-medium text-[#0F172A] mb-1.5">{label}</label>
-      {children}
-      {error && <p className="text-xs text-red-500 mt-1">{error}</p>}
-    </div>
-  )
 
   /* ─── Image upload ──────────────────────────── */
 
@@ -130,31 +157,6 @@ export default function ProductForm({ initial, onSave, title }: Props) {
       setSaving(false)
     }
   }
-
-  /* ─── Toggle switch ─────────────────────────── */
-
-  const Toggle = ({
-    value, onChange, labelOn, labelOff, color = 'bg-[#0F766E]',
-  }: {
-    value: boolean
-    onChange: () => void
-    labelOn: string
-    labelOff: string
-    color?: string
-  }) => (
-    <label className="flex items-center justify-between cursor-pointer">
-      <span className="text-sm font-medium text-[#0F172A]">
-        {value ? labelOn : labelOff}
-      </span>
-      <button
-        type="button"
-        onClick={onChange}
-        className={`relative w-11 h-6 rounded-full transition-colors duration-200 ${value ? color : 'bg-gray-200'}`}
-      >
-        <span className={`absolute top-1 w-4 h-4 rounded-full bg-white shadow transition-all duration-200 ${value ? 'left-6' : 'left-1'}`} />
-      </button>
-    </label>
-  )
 
   /* ─── Render ────────────────────────────────── */
 
