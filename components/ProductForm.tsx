@@ -152,8 +152,10 @@ export default function ProductForm({ initial, onSave, title }: Props) {
         featured:      form.featured,
       })
       router.push('/admin/produtos')
-    } catch {
-      setErrors(er => ({ ...er, submit: 'Erro ao salvar. Verifique sua conexão com o Supabase.' }))
+    } catch (err) {
+      console.error('[ProductForm] Erro ao salvar produto:', err)
+      const msg = err instanceof Error ? err.message : String(err)
+      setErrors(er => ({ ...er, submit: `Erro ao salvar: ${msg}` }))
       setSaving(false)
     }
   }
